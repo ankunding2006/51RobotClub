@@ -1,0 +1,239 @@
+C51 COMPILER V9.60.7.0   SMG_2                                                             01/26/2025 17:38:50 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE SMG_2
+OBJECT MODULE PLACED IN smg_2.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE smg_2.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include<reg52.h>
+   2          #define uchar unsigned char
+   3          #define uint unsigned int
+   4          
+   5          void uart_init(void);
+   6          void measure_distance(void);
+   7          void display_float(uint num);
+   8          void send_distance(uint distance);
+   9          void send_char(uchar ch);
+  10          void Delay_us(uint us);
+  11          void delay(uchar x);
+  12          
+  13          int fm_flag=0;
+  14          uchar num;
+  15          uint disnum;
+  16          uint distance = 0;
+  17          
+  18          sbit dula=P2^6;
+  19          sbit wela=P2^7;
+  20          sbit fm=P2^3;
+  21          sbit Trig = P1^0;
+  22          sbit Echo = P1^1;
+  23          
+  24          uchar code table_du[]={
+  25          0x3f,0x06,0x5b,0x4f,0x66,0x6d,
+  26          0x7d,0x07,0x7f,0x6f,0x77,0x7c,
+  27          0x39,0x5e,0x79,0x71};
+  28          
+  29          void main()
+  30          {
+  31   1          TMOD = 0x21;
+  32   1          TH0 = 0;
+  33   1          TL0 = 0;
+  34   1          
+  35   1          uart_init();
+  36   1          
+  37   1          EA = 1;
+  38   1          ET0 = 1;
+  39   1          
+  40   1          while(1)
+  41   1          {
+  42   2              measure_distance();
+  43   2              display_float(distance);
+  44   2              
+  45   2              if(fm_flag == 1)
+  46   2              {
+  47   3                  fm = 0;
+  48   3              }
+  49   2              else
+  50   2              {
+  51   3                  fm = 1;
+  52   3              }
+  53   2              
+  54   2              send_distance(distance);
+  55   2              delay(100);
+C51 COMPILER V9.60.7.0   SMG_2                                                             01/26/2025 17:38:50 PAGE 2   
+
+  56   2          }
+  57   1      }
+  58          
+  59          void time0() interrupt 1
+  60          {
+  61   1          TH0=(65536-50000)/256;
+  62   1          TL0=(65536-50000)%256;
+  63   1          num++;
+  64   1      }
+  65          
+  66          void display_float(uint num)
+  67          {
+  68   1          P0=table_du[num/1000];
+  69   1          dula=1;
+  70   1          dula=0;
+  71   1          P0=0xfe;
+  72   1          wela=1;
+  73   1          wela=0;
+  74   1          delay(10);
+  75   1      
+  76   1          P0=table_du[num%1000/100];
+  77   1          dula=1;
+  78   1          dula=0;
+  79   1          P0=0xfd;
+  80   1          wela=1;
+  81   1          wela=0; 
+  82   1          delay(10);
+  83   1      
+  84   1          P0=table_du[num%100/10] | 0x80;
+  85   1          dula=1;
+  86   1          dula=0;
+  87   1          P0=0xfb;
+  88   1          wela=1;
+  89   1          wela=0;
+  90   1          delay(10);
+  91   1      
+  92   1          P0=table_du[num%10];
+  93   1          dula=1;
+  94   1          dula=0;
+  95   1          P0=0xf7;
+  96   1          wela=1;
+  97   1          wela=0;
+  98   1          delay(10);
+  99   1      }
+ 100          
+ 101          void uart_init()
+ 102          {
+ 103   1          SCON = 0x50;
+ 104   1          PCON = 0x00;
+ 105   1          TMOD &= 0x0F;
+ 106   1          TMOD |= 0x20;
+ 107   1          TH1 = 0xFD;
+ 108   1          TL1 = 0xFD;
+ 109   1          TR1 = 1;
+ 110   1      }
+ 111          
+ 112          void send_char(uchar ch)
+ 113          {
+ 114   1          SBUF = ch;
+ 115   1          while(!TI);
+ 116   1          TI = 0;
+ 117   1      }
+C51 COMPILER V9.60.7.0   SMG_2                                                             01/26/2025 17:38:50 PAGE 3   
+
+ 118          
+ 119          void send_distance(uint distance)
+ 120          {
+ 121   1          uint integer_part = distance / 10;
+ 122   1          uchar decimal_part = distance % 10;
+ 123   1          
+ 124   1          if(integer_part >= 100)
+ 125   1          {
+ 126   2              send_char(integer_part/100 + '0');
+ 127   2              send_char((integer_part/10)%10 + '0');
+ 128   2              send_char(integer_part%10 + '0');
+ 129   2          }
+ 130   1          else if(integer_part >= 10)
+ 131   1          {
+ 132   2              send_char(' ');
+ 133   2              send_char(integer_part/10 + '0');
+ 134   2              send_char(integer_part%10 + '0');
+ 135   2          }
+ 136   1          else
+ 137   1          {
+ 138   2              send_char(' ');
+ 139   2              send_char(' ');
+ 140   2              send_char(integer_part + '0');
+ 141   2          }
+ 142   1          
+ 143   1          send_char('.');
+ 144   1          send_char(decimal_part + '0');
+ 145   1          send_char(' ');
+ 146   1          send_char('c');
+ 147   1          send_char('m');
+ 148   1          send_char('\r');
+ 149   1          send_char('\n');
+ 150   1      }
+ 151          
+ 152          void Delay_us(uint us)
+ 153          {
+ 154   1          while(us--);
+ 155   1      }
+ 156          
+ 157          void measure_distance(void)
+ 158          {
+ 159   1          uint time = 0;
+ 160   1          float temp_distance = 0;
+ 161   1          
+ 162   1          Trig = 0;
+ 163   1          Delay_us(5);
+ 164   1          Trig = 1;
+ 165   1          Delay_us(20);
+ 166   1          Trig = 0;
+ 167   1          
+ 168   1          while(!Echo);
+ 169   1          
+ 170   1          TR0 = 1;
+ 171   1          while(Echo)
+ 172   1          {
+ 173   2              if(TH0 > 0x38)
+ 174   2              {
+ 175   3                  TR0 = 0;
+ 176   3                  distance = 4000;
+ 177   3                  return;
+ 178   3              }
+ 179   2          }
+C51 COMPILER V9.60.7.0   SMG_2                                                             01/26/2025 17:38:50 PAGE 4   
+
+ 180   1          TR0 = 0;
+ 181   1          
+ 182   1          time = (TH0 * 256 + TL0);
+ 183   1          
+ 184   1          temp_distance = ((float)time * 0.034) / 2;
+ 185   1          distance = (uint)(temp_distance * 10);
+ 186   1          
+ 187   1          if(distance < 40)
+ 188   1              distance = 40;
+ 189   1          else if(distance > 4000)
+ 190   1              distance = 4000;
+ 191   1          
+ 192   1          if(distance < 150)
+ 193   1          {
+ 194   2              fm_flag = 1;
+ 195   2          }
+ 196   1          else
+ 197   1          {
+ 198   2              fm_flag = 0;
+ 199   2          }
+ 200   1          
+ 201   1          TH0 = 0;
+ 202   1          TL0 = 0;
+ 203   1      }
+ 204          
+ 205          void delay(uchar x)
+ 206          {
+ 207   1          uint i, j;
+ 208   1          for(i = x; i > 0; i--)
+ 209   1              for(j = 110; j > 0; j--);
+ 210   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    691    ----
+   CONSTANT SIZE    =     16    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      7       7
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

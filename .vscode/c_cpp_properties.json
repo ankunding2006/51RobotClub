@@ -1,0 +1,73 @@
+{
+    "configurations": [
+        {
+            "name": "windows-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:\\Keil_v5\\C51\\INC",
+                "c:\\Users\\34118\\Desktop\\inbody design\\51\\006-数码管动态显示\\006-数码管动态显示\\例程\\smg_3"
+            ],
+            "defines": [
+                "__C51__",
+                "__VSCODE_C51__",
+                "reentrant=",
+                "compact=",
+                "small=",
+                "large=",
+                "data=",
+                "idata=",
+                "pdata=",
+                "bdata=",
+                "xdata=",
+                "code=",
+                "bit=char",
+                "sbit=char",
+                "sfr=char",
+                "sfr16=int",
+                "sfr32=int",
+                "interrupt=",
+                "using=",
+                "_at_=",
+                "_priority_=",
+                "_task_="
+            ],
+            "intelliSenseMode": "windows-gcc-x64",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "compilerPath": "C:/msys64/ucrt64/bin/gcc.exe"
+        },
+        {
+            "name": "Target 1",
+            "includePath": [
+                "C:\\Keil_v5\\C51\\INC",
+                "c:\\Users\\34118\\Desktop\\inbody design\\51\\006-数码管动态显示\\006-数码管动态显示\\例程\\smg_3"
+            ],
+            "defines": [
+                "__C51__",
+                "__VSCODE_C51__",
+                "reentrant=",
+                "compact=",
+                "small=",
+                "large=",
+                "data=",
+                "idata=",
+                "pdata=",
+                "bdata=",
+                "xdata=",
+                "code=",
+                "bit=char",
+                "sbit=char",
+                "sfr=char",
+                "sfr16=int",
+                "sfr32=int",
+                "interrupt=",
+                "using=",
+                "_at_=",
+                "_priority_=",
+                "_task_="
+            ],
+            "intelliSenseMode": "${default}"
+        }
+    ],
+    "version": 4
+}
