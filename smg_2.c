@@ -15,6 +15,10 @@ uchar num;
 uint disnum;
 uint distance = 0;
 
+
+
+
+
 sbit dula=P2^6;
 sbit wela=P2^7;
 sbit fm=P2^3;
