@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    01/26/2025  17:38:50  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    02/06/2025  19:10:29  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
@@ -38,11 +38,11 @@ LINK MAP OF MODULE:  smg_2 (SMG_2)
                     0003H     0008H                  *** GAP ***
             CODE    000BH     0003H     ABSOLUTE     
             CODE    000EH     02C8H     UNIT         ?C?LIB_CODE
-            CODE    02D6H     00C7H     UNIT         ?PR?MEASURE_DISTANCE?SMG_2
-            CODE    039DH     00AEH     UNIT         ?PR?_DISPLAY_FLOAT?SMG_2
-            CODE    044BH     00A5H     UNIT         ?PR?_SEND_DISTANCE?SMG_2
-            CODE    04F0H     008CH     UNIT         ?C_C51STARTUP
-            CODE    057CH     0035H     UNIT         ?PR?MAIN?SMG_2
+            CODE    02D6H     00CCH     UNIT         ?PR?MEASURE_DISTANCE?SMG_2
+            CODE    03A2H     00AEH     UNIT         ?PR?_DISPLAY_FLOAT?SMG_2
+            CODE    0450H     00A5H     UNIT         ?PR?_SEND_DISTANCE?SMG_2
+            CODE    04F5H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0581H     0030H     UNIT         ?PR?MAIN?SMG_2
             CODE    05B1H     0026H     UNIT         ?PR?_DELAY?SMG_2
             CODE    05D7H     0015H     UNIT         ?PR?UART_INIT?SMG_2
             CODE    05ECH     0015H     UNIT         ?PR?_SEND_CHAR?SMG_2
@@ -59,7 +59,7 @@ OVERLAY MAP OF MODULE:   smg_2 (SMG_2)
 SEGMENT                              DATA_GROUP 
   +--> CALLED SEGMENT              START    LENGTH
 --------------------------------------------------
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/26/2025  17:38:50  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/06/2025  19:10:29  PAGE 2
 
 
 ?C_C51STARTUP                      -----    -----
@@ -71,7 +71,6 @@ SEGMENT                              DATA_GROUP
   +--> ?PR?MEASURE_DISTANCE?SMG_2
   +--> ?PR?_DISPLAY_FLOAT?SMG_2
   +--> ?PR?_SEND_DISTANCE?SMG_2
-  +--> ?PR?_DELAY?SMG_2
 
 ?PR?MEASURE_DISTANCE?SMG_2         000FH    0004H
   +--> ?PR?_DELAY_US?SMG_2
@@ -104,7 +103,7 @@ SYMBOL TABLE OF MODULE:  smg_2 (SMG_2)
   B:0090H.0       PUBLIC        Trig
   D:00B8H         PUBLIC        IP
   B:0098H.1       PUBLIC        TI
-  C:057CH         PUBLIC        main
+  C:0581H         PUBLIC        main
   B:00A0H.6       PUBLIC        dula
   C:02D6H         PUBLIC        measure_distance
   B:00A0H.7       PUBLIC        wela
@@ -119,10 +118,10 @@ SYMBOL TABLE OF MODULE:  smg_2 (SMG_2)
   B:00A8H.1       PUBLIC        ET0
   D:008CH         PUBLIC        TH0
   D:008DH         PUBLIC        TH1
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/26/2025  17:38:50  PAGE 3
-
-
   D:000AH         PUBLIC        distance
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/06/2025  19:10:29  PAGE 3
+
+
   D:000CH         PUBLIC        fm_flag
   D:008AH         PUBLIC        TL0
   D:000EH         PUBLIC        num
@@ -131,100 +130,99 @@ SYMBOL TABLE OF MODULE:  smg_2 (SMG_2)
   C:05D7H         PUBLIC        uart_init
   B:0088H.4       PUBLIC        TR0
   B:0088H.6       PUBLIC        TR1
-  C:044BH         PUBLIC        _send_distance
+  C:0450H         PUBLIC        _send_distance
   C:061CH         PUBLIC        time0
   D:00C8H         PUBLIC        T2CON
-  C:039DH         PUBLIC        _display_float
+  C:03A2H         PUBLIC        _display_float
   D:00D0H         PUBLIC        PSW
   -------         PROC          MAIN
-  C:057CH         LINE#         29
-  C:057CH         LINE#         30
-  C:057CH         LINE#         31
-  C:057FH         LINE#         32
-  C:0582H         LINE#         33
-  C:0584H         LINE#         35
-  C:0587H         LINE#         37
-  C:0589H         LINE#         38
-  C:058BH         LINE#         40
-  C:058BH         LINE#         41
-  C:058BH         LINE#         42
-  C:058EH         LINE#         43
-  C:0595H         LINE#         45
-  C:059DH         LINE#         46
-  C:059DH         LINE#         47
-  C:059FH         LINE#         48
-  C:05A1H         LINE#         50
-  C:05A1H         LINE#         51
-  C:05A3H         LINE#         52
-  C:05A3H         LINE#         54
-  C:05AAH         LINE#         55
-  C:05AFH         LINE#         56
+  C:0581H         LINE#         63
+  C:0581H         LINE#         64
+  C:0581H         LINE#         66
+  C:0584H         LINE#         67
+  C:0587H         LINE#         68
+  C:0589H         LINE#         70
+  C:058CH         LINE#         72
+  C:058EH         LINE#         73
+  C:0590H         LINE#         75
+  C:0590H         LINE#         76
+  C:0590H         LINE#         77
+  C:0593H         LINE#         78
+  C:059AH         LINE#         81
+  C:05A2H         LINE#         82
+  C:05A2H         LINE#         83
+  C:05A4H         LINE#         84
+  C:05A6H         LINE#         86
+  C:05A6H         LINE#         87
+  C:05A8H         LINE#         88
+  C:05A8H         LINE#         90
+  C:05AFH         LINE#         91
   -------         ENDPROC       MAIN
   -------         PROC          TIME0
-  C:061CH         LINE#         59
-  C:061CH         LINE#         61
-  C:061FH         LINE#         62
-  C:0622H         LINE#         63
-  C:0624H         LINE#         64
+  C:061CH         LINE#         95
+  C:061CH         LINE#         97
+  C:061FH         LINE#         98
+  C:0622H         LINE#         99
+  C:0624H         LINE#         100
   -------         ENDPROC       TIME0
   -------         PROC          _DISPLAY_FLOAT
   D:000FH         SYMBOL        num
-  C:039DH         LINE#         66
-  C:03A1H         LINE#         67
-  C:03A1H         LINE#         68
-  C:03B6H         LINE#         69
-  C:03B8H         LINE#         70
-  C:03BAH         LINE#         71
-  C:03BDH         LINE#         72
-  C:03BDH         LINE#         73
-  C:03BDH         LINE#         74
-  C:03C0H         LINE#         76
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/26/2025  17:38:50  PAGE 4
+  C:03A2H         LINE#         103
+  C:03A6H         LINE#         104
+  C:03A6H         LINE#         106
+  C:03BBH         LINE#         107
+  C:03BDH         LINE#         108
+  C:03BFH         LINE#         109
+  C:03C2H         LINE#         110
+  C:03C2H         LINE#         111
+  C:03C2H         LINE#         112
+  C:03C5H         LINE#         115
+  C:03EBH         LINE#         116
+  C:03EDH         LINE#         117
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/06/2025  19:10:29  PAGE 4
 
 
-  C:03E6H         LINE#         77
-  C:03E8H         LINE#         78
-  C:03EAH         LINE#         79
-  C:03EDH         LINE#         80
-  C:03EDH         LINE#         81
-  C:03EDH         LINE#         82
-  C:03F0H         LINE#         84
-  C:0418H         LINE#         85
-  C:041AH         LINE#         86
-  C:041CH         LINE#         87
-  C:041FH         LINE#         88
-  C:041FH         LINE#         89
-  C:041FH         LINE#         90
-  C:0422H         LINE#         92
-  C:043BH         LINE#         93
-  C:043DH         LINE#         94
-  C:043FH         LINE#         95
-  C:0442H         LINE#         96
-  C:0444H         LINE#         97
-  C:0446H         LINE#         98
+  C:03EFH         LINE#         118
+  C:03F2H         LINE#         119
+  C:03F2H         LINE#         120
+  C:03F2H         LINE#         121
+  C:03F5H         LINE#         124
+  C:041DH         LINE#         125
+  C:041FH         LINE#         126
+  C:0421H         LINE#         127
+  C:0424H         LINE#         128
+  C:0424H         LINE#         129
+  C:0424H         LINE#         130
+  C:0427H         LINE#         133
+  C:0440H         LINE#         134
+  C:0442H         LINE#         135
+  C:0444H         LINE#         136
+  C:0447H         LINE#         137
+  C:0449H         LINE#         138
+  C:044BH         LINE#         139
   -------         ENDPROC       _DISPLAY_FLOAT
   -------         PROC          UART_INIT
-  C:05D7H         LINE#         101
-  C:05D7H         LINE#         102
-  C:05D7H         LINE#         103
-  C:05DAH         LINE#         104
-  C:05DDH         LINE#         105
-  C:05E0H         LINE#         106
-  C:05E3H         LINE#         107
-  C:05E6H         LINE#         108
-  C:05E9H         LINE#         109
-  C:05EBH         LINE#         110
+  C:05D7H         LINE#         143
+  C:05D7H         LINE#         144
+  C:05D7H         LINE#         145
+  C:05DAH         LINE#         146
+  C:05DDH         LINE#         147
+  C:05E0H         LINE#         148
+  C:05E3H         LINE#         149
+  C:05E6H         LINE#         150
+  C:05E9H         LINE#         151
+  C:05EBH         LINE#         152
   -------         ENDPROC       UART_INIT
   -------         PROC          L?0043
   -------         ENDPROC       L?0043
   -------         PROC          _SEND_CHAR
   D:0007H         SYMBOL        ch
-  C:05F9H         LINE#         112
-  C:05F9H         LINE#         113
-  C:05F9H         LINE#         114
-  C:05FBH         LINE#         115
-  C:05FEH         LINE#         116
-  C:0600H         LINE#         117
+  C:05F9H         LINE#         154
+  C:05F9H         LINE#         155
+  C:05F9H         LINE#         156
+  C:05FBH         LINE#         157
+  C:05FEH         LINE#         158
+  C:0600H         LINE#         159
   -------         ENDPROC       _SEND_CHAR
   -------         PROC          _SEND_DISTANCE
   D:0082H         SYMBOL        distance
@@ -232,90 +230,92 @@ SYMBOL TABLE OF MODULE:  smg_2 (SMG_2)
   D:0002H         SYMBOL        integer_part
   D:000FH         SYMBOL        decimal_part
   -------         ENDDO         
-  C:044BH         LINE#         119
-  C:044FH         LINE#         120
-  C:044FH         LINE#         121
-  C:045AH         LINE#         122
-  C:0467H         LINE#         124
-  C:0470H         LINE#         125
-  C:0470H         LINE#         126
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/26/2025  17:38:50  PAGE 5
+  C:0450H         LINE#         162
+  C:0454H         LINE#         163
+  C:0454H         LINE#         164
+  C:045FH         LINE#         165
+  C:046CH         LINE#         168
+  C:0475H         LINE#         169
+  C:0475H         LINE#         170
+  C:047AH         LINE#         171
+  C:0493H         LINE#         172
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/06/2025  19:10:29  PAGE 5
 
 
-  C:0475H         LINE#         127
-  C:048EH         LINE#         128
-  C:049AH         LINE#         129
-  C:049CH         LINE#         130
-  C:04A7H         LINE#         131
-  C:04A7H         LINE#         132
-  C:04AAH         LINE#         133
-  C:04AFH         LINE#         134
-  C:04BBH         LINE#         135
-  C:04BDH         LINE#         137
-  C:04BDH         LINE#         138
-  C:04C0H         LINE#         139
-  C:04C3H         LINE#         140
-  C:04CAH         LINE#         141
-  C:04CAH         LINE#         143
-  C:04CFH         LINE#         144
-  C:04D7H         LINE#         145
-  C:04DCH         LINE#         146
-  C:04E1H         LINE#         147
-  C:04E6H         LINE#         148
-  C:04EBH         LINE#         149
+  C:049FH         LINE#         173
+  C:04A1H         LINE#         174
+  C:04ACH         LINE#         175
+  C:04ACH         LINE#         176
+  C:04AFH         LINE#         177
+  C:04B4H         LINE#         178
+  C:04C0H         LINE#         179
+  C:04C2H         LINE#         181
+  C:04C2H         LINE#         182
+  C:04C5H         LINE#         183
+  C:04C8H         LINE#         184
+  C:04CFH         LINE#         185
+  C:04CFH         LINE#         188
+  C:04D4H         LINE#         189
+  C:04DCH         LINE#         190
+  C:04E1H         LINE#         191
+  C:04E6H         LINE#         192
+  C:04EBH         LINE#         193
+  C:04F0H         LINE#         194
   -------         ENDPROC       _SEND_DISTANCE
   -------         PROC          _DELAY_US
   D:0006H         SYMBOL        us
-  C:0611H         LINE#         152
-  C:0611H         LINE#         153
-  C:0611H         LINE#         154
-  C:061BH         LINE#         155
+  C:0611H         LINE#         198
+  C:0611H         LINE#         199
+  C:0611H         LINE#         200
+  C:061BH         LINE#         201
   -------         ENDPROC       _DELAY_US
   -------         PROC          MEASURE_DISTANCE
   -------         DO            
   D:0002H         SYMBOL        time
   D:000FH         SYMBOL        temp_distance
   -------         ENDDO         
-  C:02D6H         LINE#         157
-  C:02D6H         LINE#         158
-  C:02D6H         LINE#         159
-  C:02D9H         LINE#         160
-  C:02E1H         LINE#         162
-  C:02E3H         LINE#         163
-  C:02E9H         LINE#         164
-  C:02EBH         LINE#         165
-  C:02F2H         LINE#         166
-  C:02F4H         LINE#         168
-  C:02F7H         LINE#         170
-  C:02F9H         LINE#         171
-  C:02FCH         LINE#         172
-  C:02FCH         LINE#         173
-  C:0303H         LINE#         174
-  C:0303H         LINE#         175
-  C:0305H         LINE#         176
-  C:030CH         LINE#         178
-  C:030CH         LINE#         179
-  C:030CH         LINE#         180
-  C:030EH         LINE#         182
-  C:031CH         LINE#         184
-  C:0342H         LINE#         185
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/26/2025  17:38:50  PAGE 6
+  C:02D6H         LINE#         204
+  C:02D6H         LINE#         205
+  C:02D6H         LINE#         206
+  C:02D9H         LINE#         207
+  C:02E1H         LINE#         210
+  C:02E3H         LINE#         211
+  C:02E9H         LINE#         212
+  C:02EBH         LINE#         213
+  C:02F2H         LINE#         214
+  C:02F4H         LINE#         216
+  C:02F7H         LINE#         218
+  C:02FAH         LINE#         219
+  C:02FCH         LINE#         220
+  C:02FEH         LINE#         221
+  C:0301H         LINE#         222
+  C:0301H         LINE#         223
+  C:0308H         LINE#         224
+  C:0308H         LINE#         225
+  C:030AH         LINE#         226
+  C:0311H         LINE#         228
+  C:0311H         LINE#         229
+  C:0311H         LINE#         230
+  C:0313H         LINE#         233
+  C:0321H         LINE#         234
+  C:0347H         LINE#         235
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/06/2025  19:10:29  PAGE 6
 
 
-  C:035BH         LINE#         187
-  C:0366H         LINE#         188
-  C:036EH         LINE#         189
-  C:0379H         LINE#         190
-  C:037FH         LINE#         192
-  C:038AH         LINE#         193
-  C:038AH         LINE#         194
-  C:0390H         LINE#         195
-  C:0392H         LINE#         197
-  C:0392H         LINE#         198
-  C:0397H         LINE#         199
-  C:0397H         LINE#         201
-  C:039AH         LINE#         202
-  C:039CH         LINE#         203
+  C:0360H         LINE#         238
+  C:036BH         LINE#         239
+  C:0373H         LINE#         240
+  C:037EH         LINE#         241
+  C:0384H         LINE#         244
+  C:038FH         LINE#         245
+  C:038FH         LINE#         246
+  C:0395H         LINE#         247
+  C:0397H         LINE#         249
+  C:0397H         LINE#         250
+  C:039CH         LINE#         251
+  C:039CH         LINE#         254
+  C:039FH         LINE#         255
+  C:03A1H         LINE#         256
   -------         ENDPROC       MEASURE_DISTANCE
   C:05B1H         SYMBOL        L?0045
   -------         PROC          L?0044
@@ -327,11 +327,11 @@ SYMBOL TABLE OF MODULE:  smg_2 (SMG_2)
   D:0006H         SYMBOL        i
   D:0004H         SYMBOL        j
   -------         ENDDO         
-  C:05B7H         LINE#         205
-  C:05B7H         LINE#         206
-  C:05B7H         LINE#         208
-  C:05C2H         LINE#         209
-  C:05D6H         LINE#         210
+  C:05B7H         LINE#         259
+  C:05B7H         LINE#         260
+  C:05B7H         LINE#         262
+  C:05C2H         LINE#         263
+  C:05D6H         LINE#         264
   -------         ENDPROC       _DELAY
   -------         ENDMOD        SMG_2
 
@@ -359,7 +359,7 @@ SYMBOL TABLE OF MODULE:  smg_2 (SMG_2)
 
   -------         MODULE        ?C?LNEG
   C:02C8H         PUBLIC        ?C?LNEG
-BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  01/26/2025  17:38:50  PAGE 7
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  02/06/2025  19:10:29  PAGE 7
 
 
   -------         ENDMOD        ?C?LNEG
